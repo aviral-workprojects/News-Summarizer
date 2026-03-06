@@ -1,0 +1,33 @@
+# Core ML
+torch==2.4.1
+torchvision==0.19.1
+transformers==4.44.2
+datasets==2.21.0
+accelerate==0.34.2
+
+# NLP utils
+sentencepiece>=0.2.0
+rouge-score>=0.1.2
+
+# App framework
+streamlit==1.31.0
+
+# Pinned transitive deps to resolve conflicts
+numpy>=1.19.3,<2.0
+packaging>=16.8,<24
+fsspec>=2023.1.0,<=2024.6.1
+pandas>=2.2,<3.0
+
+# Groq LLM
+groq>=0.4.1
+
+# Web scraping
+newspaper3k>=0.2.8
+lxml_html_clean
+beautifulsoup4>=4.12
+requests>=2.32.2
+lxml>=4.9
+
+# Misc
+pyngrok>=7.1
+Pillow>=10
