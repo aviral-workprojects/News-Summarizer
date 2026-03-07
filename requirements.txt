@@ -1,26 +1,43 @@
-torch==2.2.2
-torchvision==0.17.2
-transformers==4.44.2
-datasets==2.21.0
-accelerate==0.34.2
+# Core ML dependencies
+torch
+torchvision
 
-sentencepiece>=0.2.0
-rouge-score>=0.1.2
-
+# Streamlit
 streamlit==1.31.0
 
-numpy>=1.19.3,<2.0
-packaging>=16.8,<24
-fsspec>=2023.1.0,<=2024.6.1
-pandas>=2.2,<3.0
+# Transformers / NLP
+transformers==4.44.2
+datasets==2.21.0
+accelerate==1.0.1
+sentencepiece==0.2.0
 
-groq>=0.4.1
+# Evaluation metrics
+rouge-score==0.1.2
+bert-score>=0.3.13
 
-newspaper3k>=0.2.8
-lxml_html_clean
-beautifulsoup4>=4.12
+# Data processing
+pandas==2.2.3
+
+# Networking
+pyngrok==7.1.2
+
+# LLM APIs
+groq==0.4.1
+google-generativeai>=0.3.0
+
+# Web scraping
+newspaper3k==0.2.8
+beautifulsoup4==4.12.2
 requests>=2.32.2
-lxml>=4.9
+lxml==4.9.3
 
-pyngrok>=7.1
-Pillow>=10
+# Image processing
+Pillow>=10.0.0
+
+# Production enhancements
+python-dotenv>=1.0.0
+aiohttp>=3.9.0
+diskcache>=5.6.3
+tenacity>=8.2.3
+spacy>=3.7.0
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.0/en_core_web_sm-3.7.0-py3-none-any.whl
