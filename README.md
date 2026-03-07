@@ -160,9 +160,3 @@ news-summarization-system
 **Author:** Aviral Pratap Singh Chawda
 
 *AI / ML Engineer*
-
-```
-
-Would you like me to add a specific section for **API Documentation** or perhaps a **License** section to this file?
-
-```
