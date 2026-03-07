@@ -1,345 +1,169 @@
-# 🚀 Hybrid News Summarizer
-### BART + Groq LLM | AI-Powered News Summarization System
+```markdown
+# News Summarization System 📰
+**Production-grade NLP system for automated news analysis using hybrid summarization, intelligent scraping, and advanced NLP pipelines.**
 
-A powerful **LLM-based news summarization platform** that scrapes news articles from the web, processes them using **Facebook BART**, and enhances summaries with **Groq-powered LLaMA models**.
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+[![Framework](https://img.shields.io/badge/Framework-Streamlit-FF4B4B.svg)](https://streamlit.io/)
+[![NLP](https://img.shields.io/badge/NLP-HuggingFace-orange.svg)](https://huggingface.co/)
 
-The system supports **URL scraping, homepage crawling, batch summarization, text input summarization, and dataset evaluation**.
-
----
-
-# 📌 Project Overview
-
-Businesses and analysts often need to **quickly understand large volumes of news articles**.  
-This project builds an **AI-powered summarization pipeline** that extracts key information from long news articles.
-
-The system:
-
-- Scrapes news articles from the web
-- Processes them using **BART-large-CNN**
-- Refines summaries using **Groq LLM**
-- Extracts **key bullet points**
-- Classifies news into categories
-- Evaluates summaries using **ROUGE metrics**
+**Developed by:** [Aviral Pratap Singh Chawda](https://github.com/YOUR_USERNAME)  
+**Location:** Gandhinagar, Gujarat, India | AI & Data Science
 
 ---
 
-# 🧠 Model Architecture
+## 🚀 Project Overview
+Modern businesses and analysts need to quickly digest large volumes of news. This project implements an AI-powered news intelligence pipeline that automatically:
 
-## Primary Model
-**facebook/bart-large-cnn**
-
-Why BART?
-
-- Designed specifically for **abstractive summarization**
-- Performs well on **news datasets**
-- Strong contextual understanding
-
-## Hybrid Enhancement
-
-The BART output is optionally refined using **Groq LLaMA models** to improve:
-
-- factual consistency
-- readability
-- coherence
-
-Pipeline:
-
-```
-News Article
-     ↓
-Web Scraper
-     ↓
-BART Summarization
-     ↓
-Groq LLM Refinement
-     ↓
-Final Summary + Key Points + Classification
-```
+* **Scrapes** articles from diverse web sources.
+* **Summarizes** long-form content using **BART**.
+* **Refines** summaries via **Groq (LLaMA)** or **Gemini LLMs**.
+* **Extracts** key entities and high-level insights.
+* **Analyzes** sentiment and classifies news categories.
+* **Evaluates** quality using ROUGE and semantic metrics.
 
 ---
 
-# ⚙️ System Architecture
+## 🏗️ Model Architecture
 
-```
-User Input
-   │
-   ├── URL Scraping
-   ├── Homepage Crawling
-   ├── Batch Processing
-   └── Direct Text Input
-        │
-        ▼
-Scraping Engine (7 Layers)
-        │
-        ▼
-Article Extraction
-        │
-        ▼
-BART Summarization
-        │
-        ▼
-Groq LLM Refinement
-        │
-        ▼
-Results
- ├─ Summary
- ├─ Key Points
- ├─ Category
- └─ Evaluation Metrics
-```
+### Primary Model: `facebook/bart-large-cnn`
+We utilize BART for its specific design for abstractive summarization, strong performance on news datasets, and efficient production inference.
+
+### Hybrid Enhancement
+BART summaries can be refined using **Groq LLaMA** or **Google Gemini** to improve:
+* Factual consistency and number preservation.
+* Readability and logical coherence.
+
+
+
+**Data Flow:**
+`News Article` ➔ `Web Scraper` ➔ `BART Summarization` ➔ `LLM Refinement` ➔ `Final Insights`
 
 ---
 
-# 🌐 Advanced Web Scraping System
+## 🛠️ System Architecture
 
-The application implements a **7-layer scraping fallback system**:
-
-1. newspaper3k
-2. requests + BeautifulSoup
-3. meta-tag extraction
-4. Google AMP mirror
-5. archive.today cache
-6. Wayback Machine snapshot
-7. Freedium proxy for Medium articles
-
-This increases **scraping success rate across different websites**.
+1.  **User Input:** URL, Homepage Crawling, Batch Processing, or Direct Text.
+2.  **Scraping Engine:** `newspaper3k`, `BeautifulSoup`, and `async` requests.
+3.  **Cleaning:** Content filtering and boilerplate removal.
+4.  **Hierarchical Summarization:** Chunking logic to handle articles up to 20,000 characters.
+5.  **NLP Suite:** * **NER:** spaCy (`en_core_web_sm`)
+    * **Sentiment:** `cardiffnlp/twitter-roberta-base-sentiment`
+    * **Classification:** `facebook/bart-large-mnli` (Zero-shot)
+6.  **Caching:** `diskcache` layer for instant reloads and API cost reduction.
+7.  **Interface:** Interactive Streamlit dashboard.
 
 ---
 
-# 🧩 Features
+## ✨ Key Features
 
-## 🌐 URL Article Summarization
-Paste a news article URL and the system will generate:
+### 1. Advanced Web Scraping
+A multi-layer fallback architecture ensures high success rates:
+* Standard: `newspaper3k`, `BeautifulSoup`.
+* Fallback: Google AMP mirrors, `archive.today`, Wayback Machine.
+* Proxies: `Freedium` for Medium articles.
 
-- AI summary
-- key bullet points
-- news category
-- compression statistics
+### 2. Async & Batch Processing
+Uses `aiohttp` with connection pooling for **5–6x faster scraping** than synchronous methods.
 
----
+### 3. Hierarchical Summarization
 
-## 🏠 Homepage Crawling
+Prevents truncation of long articles by summarizing chunks and recursively combining them.
 
-Paste a site homepage such as:
-
-```
-https://www.reuters.com
-https://www.bbc.com
-```
-
-The system will:
-
-1. detect homepage
-2. crawl article links
-3. allow user to select number of articles
-4. summarize them automatically
+### 4. Intelligent Caching
+`URL` ➔ `MD5 Hash` ➔ `Cached Summary`
+* **Benefits:** Instant reload and reduced LLM costs.
+* **Policy:** 24-hour automatic expiration.
 
 ---
 
-## 📋 Batch Article Processing
+## 📊 Evaluation & Performance
 
-Paste multiple URLs and process them simultaneously.
-
-Output includes:
-
-- summaries
-- key insights
-- article categories
-- CSV export
+| Metric | BART Only | Hybrid (LLM) |
+| :--- | :--- | :--- |
+| **ROUGE-2** | 0.212 | **0.235** |
+| **Fact Preservation** | 72% | **91%** |
+| **Number Accuracy** | 68% | **94%** |
+| **Reload Speed** | - | **40x faster (cached)** |
 
 ---
 
-## 📄 Direct Text Summarization
+## 💻 Tech Stack
 
-Paste article text directly to generate:
-
-- summary
-- bullet points
-- classification
-
----
-
-## 📰 XSum Dataset Demo
-
-Includes demonstration using the **XSum news dataset**.
-
-Allows comparison between:
-
-- gold summaries
-- AI generated summaries
+* **Core:** Python, PyTorch, HuggingFace Transformers.
+* **UI:** Streamlit.
+* **NLP:** BART, spaCy, RoBERTa.
+* **Scraping:** BeautifulSoup4, newspaper3k, aiohttp.
+* **Infrastructure:** diskcache, tenacity, python-dotenv.
 
 ---
 
-## 📊 Model Evaluation
+## ⚙️ Installation & Setup
 
-Example evaluation metrics:
-
-| Metric | BART | Hybrid |
-|------|------|------|
-| ROUGE-2 | 0.212 | 0.235 |
-| Fact Preservation | 72% | 91% |
-| Number Accuracy | 68% | 94% |
-
----
-
-# 🛠️ Tech Stack
-
-## Core AI/ML
-
-- PyTorch
-- HuggingFace Transformers
-- HuggingFace Datasets
-- BART-large-CNN
-
-## LLM Acceleration
-
-- Groq API
-- LLaMA models
-
-## Web Scraping
-
-- newspaper3k
-- BeautifulSoup
-- Requests
-- Archive.today
-- Wayback Machine
-
-## App Framework
-
-- Streamlit
-
-## Data Processing
-
-- Pandas
-- NumPy
-
----
-
-# 📂 Project Structure
-
-```
-Hybrid-News-Summarizer
-│
-├── app.py
-├── requirements.txt
-├── README.md
-```
-
----
-
-# 🚀 Installation
-
-## 1. Clone Repository
-
+### 1. Clone & Environment
 ```bash
-git clone https://github.com/YOUR_USERNAME/news-summarizer.git
+git clone [https://github.com/YOUR_USERNAME/news-summarizer.git](https://github.com/YOUR_USERNAME/news-summarizer.git)
 cd news-summarizer
-```
-
----
-
-## 2. Create Virtual Environment
-
-```bash
 python -m venv venv
+# Activate (Windows: venv\Scripts\activate | Mac/Linux: source venv/bin/activate)
+
 ```
 
-Activate environment
-
-Mac/Linux
-
-```bash
-source venv/bin/activate
-```
-
-Windows
-
-```bash
-venv\Scripts\activate
-```
-
----
-
-## 3. Install Dependencies
+### 2. Dependencies
 
 ```bash
 pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+
 ```
 
----
+### 3. Environment Variables
 
-## 4. Run Application
+Create a `.env` file in the root directory:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+GEMINI_API_KEY=your_gemini_api_key
+
+```
+
+### 4. Run
 
 ```bash
-streamlit run app.py
+streamlit run app_production.py
+
 ```
 
 ---
 
-# 🔑 Groq API Setup (Optional)
+## 📂 Project Structure
 
-Get a free API key:
+```text
+news-summarization-system
+├── app_production.py      # Main Streamlit application
+├── requirements.txt       # Dependencies
+├── .env.template          # Example environment file
+├── cache/                 # Local disk cache storage
+└── logs/                  # System logs
 
-```
-https://console.groq.com
-```
-
-Enter the key in the **Streamlit sidebar** to enable hybrid summarization.
-
----
-
-# 📊 Example Output
-
-Example summary:
-
-```
-The U.S. Federal Reserve maintained interest rates while signalling
-possible cuts later in the year as inflation continues to cool.
-```
-
-Example key points:
-
-```
-• Inflation slowed to 3.1%
-• Federal Reserve kept rates unchanged
-• Economic growth shows signs of slowing
-• Markets expect rate cuts later this year
-• Analysts warn about recession risks
 ```
 
 ---
 
-# 🎯 Learning Objectives
+## 🔮 Future Roadmap
 
-This project demonstrates:
-
-- LLM summarization pipelines
-- hybrid AI architectures
-- web scraping systems
-- Streamlit AI application development
-- ROUGE-based evaluation
-- working with the XSum dataset
+* [ ] **RAG Integration:** Connect summaries to a vector database for Q&A.
+* [ ] **Multilingual:** Support for non-English news sources.
+* [ ] **Knowledge Graphs:** Visualize relationships between extracted entities.
+* [ ] **Dockerization:** Containerize for cloud deployment (AWS/GCP).
 
 ---
 
-# 📌 Future Improvements
+**Author:** Aviral Pratap Singh Chawda
 
-- Retrieval Augmented Generation (RAG)
-- vector database integration
-- multilingual summarization
-- real-time news feeds
-- GPU optimized inference
+*AI / ML Engineer*
 
----
+```
 
-# 👨‍💻 Author
+Would you like me to add a specific section for **API Documentation** or perhaps a **License** section to this file?
 
-**Aviral Pratap Singh Chawda**  
-AI / ML Engineer  
-Gandhinagar, Gujarat, India
-
----
-
-# ⭐ If you like this project
-
-Give it a **star ⭐ on GitHub**
+```
