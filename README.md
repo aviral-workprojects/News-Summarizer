@@ -1,4 +1,3 @@
-```markdown
 # News Summarization System 📰
 **Production-grade NLP system for automated news analysis using hybrid summarization, intelligent scraping, and advanced NLP pipelines.**
 
