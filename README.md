@@ -824,14 +824,12 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 **Author:** Aviral Pratap Singh Chawda
 
-- 💼 **LinkedIn:** [Your LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
-- 🐙 **GitHub:** [Your GitHub](https://github.com/YOUR_USERNAME)
-- 📧 **Email:** your.email@example.com
-- 🌐 **Portfolio:** [Your Website](https://yourwebsite.com)
+- 💼 **LinkedIn:** [Your LinkedIn](https://www.linkedin.com/in/aviral-pratap-singh-chawda-184180385/)
+- 🐙 **GitHub:** [Your GitHub](https://github.com/aviral-workprojects)
+- 📧 **Email:** aviral.csprojects@gmail.com
 
 **For Issues:**
-- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/YOUR_USERNAME/news-summarization-system/issues)
-- 💡 **Feature Requests:** [GitHub Discussions](https://github.com/YOUR_USERNAME/news-summarization-system/discussions)
+- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/aviral-workprojects/News-Summarizer/issues/1#issue-4086123094)
 
 ---
 
@@ -839,19 +837,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 If you find this project useful, please consider giving it a star! ⭐
 
-[![Star History Chart](https://api.star-history.com/svg?repos=YOUR_USERNAME/news-summarization-system&type=Date)](https://star-history.com/#YOUR_USERNAME/news-summarization-system&Date)
-
----
-
-## 📚 Documentation
-
-Complete documentation available in `/docs`:
-
-- **[PRODUCTION_ENHANCEMENTS.md](docs/PRODUCTION_ENHANCEMENTS.md)** - All 13 production features
-- **[SCRAPING_FIX.md](docs/SCRAPING_FIX.md)** - 8-layer scraping architecture
-- **[MULTILEVEL_SUMMARIZATION.md](docs/MULTILEVEL_SUMMARIZATION.md)** - Hierarchical summarization
-- **[DIFFERENTIATED_MODES.md](docs/DIFFERENTIATED_MODES.md)** - Summary mode details
-- **[PROFESSIONAL_STYLING.md](docs/PROFESSIONAL_STYLING.md)** - UI/UX decisions
+[![Star History Chart](https://api.star-history.com/svg?repos=aviral-workprojects/News-Summarizer&type=Date)](https://star-history.com/#aviral-workprojects/News-Summarizer&Date)
 
 ---
 
